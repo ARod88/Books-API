@@ -1,0 +1,24 @@
+Books-API checklist
+
+Create folder Books-API
+
+Create file index.js
+
+Create package.json 'npm init'
+
+Install express 'npm install express'
+
+Installed nodemon with 'npm install -g nodemon'
+
+Require express in index.js
+
+Initialize express and save to the app variable 
+
+Created home page route 
+    a. Call app.get()
+    b. Set the '/' path (first argument)
+    c. Wrote the callback function with req and res
+    d. Called res.send('<h1>Hello World"<h1>')
+
+    Call app.listen(4000) to keep server open
+    
