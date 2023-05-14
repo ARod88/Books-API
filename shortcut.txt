@@ -12,6 +12,8 @@ Installed nodemon with 'npm install -g nodemon'
 
 Require express in index.js
 
+Install 'npm method-override'
+
 Initialize express and save to the app variable 
 
 Created home page route 
