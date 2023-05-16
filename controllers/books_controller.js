@@ -1,15 +1,21 @@
 const express = require('express');
-const route = express.Router();
+const books = express.Router();
+const Book = require('../models/book.js')
 
-// Getting all
-router.get('/', (req, res) => {
-    res.send('Hello World')
+
+books.get('/', (req, res) => {
+    Book.find().then((books) => {
+        res.json(books)
+    })
 });
 
-// // Getting one
-// router.get('/:id', (req, res) = > {
-//     res.send('Hello World')
-// });
+
+books.get('/:id', (req, res) = > {
+    const id = req.params.find
+    Book.findById(id).then((createBook) = > {
+        res.json(createBook)
+    })
+});
 
 // // Creating one
 
