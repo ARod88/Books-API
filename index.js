@@ -1,39 +1,34 @@
+require("dotenv").config();
 
 // dependencies
 
 const express = require('express');
-const methodOverride = require('method-override');
-const mongoose = require('mongoose');
-
-// config
-require("dotenv").config();
-const PORT = process.env.PORT;
-console.log("My port is:", PORT);
-
 const app = express();
-
-app.use(methodOverride('_method'));
+const mongoose = require('mongoose');
 
 // mongoose
 mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true,}, () => {
     console.log('connected to mongoDB:', process.env.MONGO_URI)
 });
+const db = mongoose.connection
+// middleware
+
+app.use(express.json())
 
 
-
-mongoose.set("strictQuery", true);
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-    console.log("connected to mongoDB: ", process.env.MONGO_URI);
-});
+const booksController = require("./controllers/books");
+app.use('/books', booksController);
 
 
-// home page
 
 app.get('/', (req, res) => {
+    res.render('home')
+})
 
-    res.send('<h1>Hello world<h1>');
+app.get('*', (req, res) => {
+    res.render('error404')
+})
 
-});
 
 // app listener
 
